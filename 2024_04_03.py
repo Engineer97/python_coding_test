@@ -180,6 +180,286 @@ print(">", end="")
 
 
 
+# 백준 1920 수 찾기
+
+
+'''
+
+n = int(input())
+li_a = list(map(int, input().split()))
+m = int(input())
+li_b = list(map(int, input().split()))
+
+answer = []
+
+for i in li_b:
+        if i in li_a:
+                answer.append(1)
+        else:
+                answer.append(0)
+
+for i in answer:
+        print(i)
+
+'''
+
+#-------------------------------------- 시간 초과 발생!!!!!!!!!!! -----------------------------------------------
+
+
+'''
+
+
+
+import sys
+
+n = int(sys.stdin.readline())
+a = list(map(int, sys.stdin.readline().split()))
+a.sort() # 탐색의 대상인 리스트는 반드시 정렬을 해줘야 한다!!!!!
+
+m = int(sys.stdin.readline())
+b = list(map(int, sys.stdin.readline().split()))
+# b 리스트는 탐색 대상이 아니므로 정렬을 해줄 필요가 없다!!!!
+
+
+for i in b:
+        left = 0
+        right = n-1
+
+        while left <= right:
+                mid = (left + right) // 2
+                if i > a[mid]:
+                        left = mid + 1
+                elif i < a[mid]:
+                        right = mid - 1
+                else:
+                        left = mid
+                        right = mid
+                        break
+        
+        if left == mid and right == mid:
+                print(1)
+        else:
+                print(0)
+
+                
+
+'''
+
+
+
+
+# 백준 2164 카드2
+
+
+'''
+
+
+import sys
+from collections import deque
+
+n = int(input())
+li = list(range(1, n+1))
+dq = deque(li)
+
+#print(len(dq))
+
+
+while len(dq) > 1: # 조건을 그냥 while dq: 이렇게 쓰지 말 것!
+        dq.popleft()
+        dq.append(dq.popleft())  # 굳이 tmp 변수를 쓰지 말 것!
+
+print(dq[0]) # while 문 안에서 지랄하지 말고 그냥 while 문 밖에서 하나 남은거 출력!
+
+
+
+'''
+
+
+
+
+# 백준 2839 설탕 배달
+
+
+'''
+
+
+n = int(input())
+bong = 0
+
+while n >= 0:
+        if n % 5 == 0:
+                bong += (n // 5)
+                print(bong)
+                break
+        n -= 3
+        bong += 1
+else:
+        print(-1)
+
+
+
+'''
+
+
+
+
+# 백준 9012 괄호
+# 스택 자료구조 사용!!!
+
+
+'''
+
+
+t = int(input())
+
+for i in range(t):
+        stack = []
+        target = input()
+
+        for j in target:
+                if j == '(':
+                        stack.append(j)
+                elif j == ')':
+                        if len(stack) != 0: # 아까 집어넣은 ( 가 스택 안에 있다면
+                                stack.pop() # ) 랑 스택 안에 있는 ( 가 1대1 대응으로 소멸!!!!
+                        else:
+                                print("NO")
+                                break
+        else:
+                if len(stack) == 0:
+                        print("YES")
+                else:
+                        print("NO")
+
+
+
+'''
+
+
+
+# 백준 18110 solved.ac
+
+
+'''
+
+
+
+import sys
+
+def banoll(x):
+        if x - int(x) >= 0.5:
+                return int(x) + 1
+        else:
+                return int(x)
+
+
+
+n = int(sys.stdin.readline())
+
+if n:
+        li = []
+
+        for _ in range(n):
+                li.append(int(sys.stdin.readline().strip()))
+        
+        cnt = banoll(n * 0.15)
+        li.sort()
+
+        if cnt > 0: # 제외되는 사람의 수가 1 이상
+                print(banoll(sum(li[cnt:n-cnt])/len(li[cnt:n-cnt])))
+        else: # 제외되는 사람의 수가 0 일때
+                print(banoll(sum(li)/len(li)))
+else: # 투표가 0일 때
+        print(0)
+        
+
+
+
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
