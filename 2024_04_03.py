@@ -380,17 +380,104 @@ else: # 투표가 0일 때
 
 
 
+'''
+
+
+# 프로그래머스
+# 게임 맵 최단거리
+
+
+import sys
+from collections import deque
+
+def solution(maps):
+    # 상, 하, 좌, 우 이동 방향을 정의합니다.
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, -1, 1]
+    
+    # 맵의 행과 열의 개수를 구합니다.
+    n = len(maps)  # 행의 개수
+    m = len(maps[0])  # 열의 개수
+
+    # 방문 여부를 기록하는 2차원 배열을 생성합니다.
+    visited = [[False] * m for _ in range(n)]
+
+    # BFS를 위한 큐를 생성하고, 시작 지점을 큐에 추가합니다.
+    q = deque()
+    q.append((0, 0))  # 시작 지점 (0, 0)
+
+    # 시작 지점을 방문했음을 표시합니다.
+    visited[0][0] = True
+
+    # BFS를 수행합니다.
+    while q:
+        # 큐에서 현재 위치를 꺼냅니다.
+        y, x = q.popleft()
+        
+        # 현재 위치에서 상하좌우로 이동합니다.
+        for i in range(4):
+            nx = x + dx[i]  # 다음 열
+            ny = y + dy[i]  # 다음 행
+
+            # 다음 위치가 맵의 범위 내에 있고, 갈 수 있는 길(1)인 경우를 확인합니다.
+            if 0 <= nx < m and 0 <= ny < n and maps[ny][nx] == 1:
+                # 다음 위치를 방문하지 않았다면 방문 표시하고 큐에 추가합니다.
+                if not visited[ny][nx]:
+                    visited[ny][nx] = True
+                    q.append((ny, nx))
+                    # 다음 위치까지의 거리를 현재 위치에서의 거리 + 1로 업데이트합니다.
+                    maps[ny][nx] = maps[y][x] + 1
+
+    # 상대 팀 진영까지의 거리가 1인 경우, 즉 도달할 수 없는 경우 -1을 반환합니다.
+    if maps[n - 1][m - 1] == 1:
+        return -1
+    # 그렇지 않은 경우, 상대 팀 진영까지의 최소 이동 거리를 반환합니다.
+    else:
+        return maps[n - 1][m - 1]
 
 
 
 
 
+import sys
+from collections import deque
+
+def solution(maps):
+    dx = [-1, 1, 0, 0]
+    dy = [0, 0, -1, 1]
+
+    n = len(maps)
+    m = len(maps[0])
+
+    visited = [[False]*m for _ in range(n)]
+
+    q = deque()
+    q.append((0, 0))
+
+    visited[0][0] = 1
+
+    while q:
+        y, x = q.popleft()
+
+        for i in range(4):
+            nx = x + dx[i]
+            ny = y + dy[i]
+        
+            if 0 <= nx < m and 0 <= ny < n and maps[ny][nx] == 1:
+                        if not visited[ny][nx]:
+                                visited[ny][nx] = True
+                                q.append((ny, nx))
+                                maps[ny][nx] = maps[y][x] + 1
+    if maps[n - 1][m - 1] == 1:
+        return -1
+    else:
+        return maps[n-1][m-1]
 
 
 
 
 
-
+'''
 
 
 
