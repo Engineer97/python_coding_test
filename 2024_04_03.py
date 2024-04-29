@@ -482,7 +482,7 @@ def solution(maps):
 
 
 
-
+'''
 
 # 회문 문자열 검사
 import sys
@@ -637,7 +637,7 @@ print(cnt)  # 경우의 수를 출력합니다.
 
 
 
-
+'''
 
 
 
@@ -1528,7 +1528,22 @@ print(cnt)  # 경우의 수를 출력합니다.
 
 
 
-# 계단오르기(바텀 업)
+# 돌다리 건너기(바텀 업)
+'''
+import sys
+sys.stdin = open("input.txt", 'r')
+
+
+n=int(input())
+dy=[0]*(n+1)
+dy[1]=1
+dy[2]=2
+for i in range(3, n+2):
+    dy[i]=dy[i-1]+dy[i-2]
+
+print(dy[n+1])
+
+'''
 
 
 
@@ -1682,6 +1697,358 @@ print(cnt)  # 경우의 수를 출력합니다.
 
 
 # 회장뽑기(플로이드 워샬)
+
+
+
+
+
+
+
+
+
+
+# 위상정렬(그래프 정렬)
+
+
+
+
+
+'''
+
+
+n, m = map(int, input().split())
+
+dy = [0] * (m+1)
+for i in range(n):
+        w, v = map(int, input().split())
+        for j in range(w, m+1):
+                dy[j] = max(dy[j], dy[j-w]+v)
+print(dy[m])
+
+
+
+n, m = map(int, input().split())
+
+dy = [0] * (m+1)
+for i in range(n):
+        w, v = map(int, input().split())
+        for j in range(w, m+1):
+                dy[j] = max(dy[j], dy[j-w]+v)
+
+print(dy[m])
+
+
+
+
+n, m = map(int, input().split())
+
+dy = [0] * (m+1)
+
+for i in range(n):
+        w, v = map(int, input().split())
+        for j in range(w, m+1):
+                dy[j] = max(dy[j], dy[j-w]+v)
+
+print(dy[m])
+
+
+
+n, m = map(int, input().split())
+
+dy = [0] * (m+1)
+
+for i in range(n):
+        w, v = map(int, input().split())
+        for j in range(w, m+1):
+                dy[j] = max(dy[j], dy[j-w]+v)
+
+print(dy[m])
+
+
+
+
+n, m = map(int, input().split())
+
+dy = [0] * (m+1)
+
+for i in range(n):
+        w, v = map(int, input().split())
+        for j in range(w, m+1):
+                dy[j] = max(dy[j], dy[j-w]+v)
+
+print(dy[m])
+
+
+
+n, m = map(int, input().split())
+
+dy = [0] * (m+1)
+
+for i in range(n):
+        w, v = map(int, input().split())
+        for j in range(w, m+1):
+                dy[j] = max(dy[j], dy[j-w]+v)
+
+print(dy[m])
+
+
+
+n, m = map(int, input().split())
+
+dy = [0] * (m+1)
+
+for i in range(n):
+        w, v = map(int, input().split())
+        for j in range(w, m+1):
+                dy[j] = max(dy[j], dy[j-w]+v)
+
+print(dy[m])
+
+
+
+
+
+
+
+
+
+
+n=int(input())
+arr=list(map(int, input().split()))
+arr.insert(0,0)
+dy=[0]*(n+1)
+dy[1]=1
+res=0
+for i in range(2, n+1):
+    max=0
+    for j in range(i-1, 0, -1):
+        if arr[j]<arr[i] and dy[j]>max:
+            max=dy[j]
+    dy[i]=max+1
+    if dy[i]>res:
+        res=dy[i]
+print(res)
+
+
+
+
+n = int(input())
+arr = list(map(int, input().split()))
+arr.insert(0, 0)
+dy = [0] * (n+1)
+dy[1] = 1
+res = 0
+for i in range(2, n+1):
+       max = 0
+       for j in range(i-1, 0, -1):
+              if arr[j] < arr[i] and dy[j] > max:
+                     max = dy[j]
+       dy[i] = max+1
+       if dy[i] > res:
+              res = dy[i]
+
+print(res)
+
+
+
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
