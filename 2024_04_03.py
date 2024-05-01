@@ -1855,11 +1855,34 @@ print(res)
 
 
 
+# a = []
+# b = []
+# 이렇게 하면 시간초과가 일어난다!!!!
+# 리스트와 set() 의 차이점을 알아볼 필요가 있다!!!!!!!!!!!
+
+a = set()
+b = set()
+answer = []
+
+n, m = map(int, input().split())
+
+for _ in range(n):
+        a.add(input())
+
+for _ in range(m):
+        b.add(input())
 
 
 
 
+for i in a:
+        if i in b:
+                answer.append(i)
 
+answer.sort()
+print(len(answer))
+for i in answer:
+        print(i)
 
 
 
